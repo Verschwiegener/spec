@@ -277,6 +277,7 @@ level. These unvalidated properties are:
     	<xs:element name="Properties" type="Properties" minOccurs="0" />
     </xs:all>
   </xs:complexType>
+  <!-- Emitter -->
   <xs:complexType name="Emitters">
     <xs:sequence minOccurs="0" maxOccurs="unbounded">
       <xs:element name="Emitter" type="Emitter"/>
@@ -309,6 +310,7 @@ level. These unvalidated properties are:
         		type="InterpolationToEnum" use="optional" default="Linear" />
         	<xs:attribute name="Transmission" type="xs:float"/>
   </xs:complexType>
+  <!-- Filter -->
   <xs:complexType name="Filters">
     <xs:sequence minOccurs="0" maxOccurs="unbounded">
       <xs:element name="Filter" type="Filter"/>
@@ -338,6 +340,7 @@ level. These unvalidated properties are:
     <xs:attribute name="WaveLength" type="xs:float" use="required"/>
     <xs:attribute name="Energy" type="xs:float" use="required"/>
   </xs:complexType>
+  <!-- ColorSpace -->
   <xs:complexType name="ColorSpace">
     <xs:attribute name="Name" type="xs:string" use="required"/>
     <xs:attribute name="Mode" type="ColorSpaceEnum" use="optional" default="sRGB"/>
@@ -351,6 +354,7 @@ level. These unvalidated properties are:
       <xs:element name="ColorSpace" type="ColorSpace"/>
     </xs:sequence>
   </xs:complexType>
+  <!--Gamuts -->
   <xs:complexType name="Gamuts">
   	<xs:sequence minOccurs="0">
   		<xs:element name="Gamut" type="Gamut"/>
@@ -378,6 +382,7 @@ level. These unvalidated properties are:
   	<xs:attribute name="CFC2" type="xs:float"/>
   	<xs:attribute name="CFC3" type="xs:float"/>
   </xs:complexType>
+  <!-- CRI -->
   <xs:complexType name="CRIs">
     <xs:sequence minOccurs="0" maxOccurs="unbounded">
       <xs:element name="CRIGroup" type="CRIGroup">
@@ -398,6 +403,7 @@ level. These unvalidated properties are:
     <xs:attribute name="CES" type="CESEnum" use="optional" default="CES01"/>
     <xs:attribute name="ColorRenderingIndex" type="xs:unsignedByte" use="optional"/>
   </xs:complexType>
+  <!-- Connector -->
   <xs:complexType name="Connectors">
     <xs:sequence minOccurs="0" maxOccurs="unbounded">
       <xs:element name="Connector" type="Connector"/>
@@ -410,6 +416,7 @@ level. These unvalidated properties are:
     <xs:attribute name="Gender" type="xs:integer" use="optional"/>
     <xs:attribute name="Length" type="positivefloat" use="optional"/>
   </xs:complexType>
+  <!-- Properties -->
   <xs:complexType name="Properties">
     <xs:choice minOccurs="0" maxOccurs="unbounded">
       <xs:element name="OperatingTemperature" type="OperatingTemperature"/>
@@ -507,6 +514,7 @@ level. These unvalidated properties are:
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <!-- Beam Geometry -->
   <xs:complexType name="Beam">
     <xs:complexContent>
       <xs:extension base="BasicGeometryType">
@@ -525,6 +533,7 @@ level. These unvalidated properties are:
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <!-- Display Geometry -->
   <xs:complexType name="Display">
     <xs:complexContent>
       <xs:extension base="BasicGeometryType">
@@ -532,6 +541,7 @@ level. These unvalidated properties are:
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <!-- Laser Geometry -->
   <xs:complexType name="Laser">
   	<xs:attribute name="ColorType" type="LaserColorType"
   		default="RGB" use="optional"/>
@@ -555,6 +565,11 @@ level. These unvalidated properties are:
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+   <xs:complexType name="Break">
+    <xs:attribute name="DMXOffset" type="dmxaddresstype" use="optional" default="1"/>
+    <xs:attribute name="DMXBreak" type="xs:unsignedByte" use="optional" default="1"/>
+  </xs:complexType>
+  <!-- WiringObject Geometry -->
   <xs:complexType name="WiringObject">
     <xs:complexContent>
       <xs:extension base="BasicGeometryAttributes">
@@ -586,9 +601,11 @@ level. These unvalidated properties are:
   	<xs:attribute name="FromPin" type="xs:int"/>
   	<xs:attribute name="ToPin" type="xs:int"/>
   </xs:complexType>
+  <!-- Inventory Geometry -->
   <xs:complexType name="Inventory">
   	<xs:attribute name="Count" type="xs:int"/>
   </xs:complexType>
+  <!-- Structure Geometry -->
   <xs:complexType name="Structure">
   	<xs:attribute name="LinkedGeometry" type="nametype" use="optional"/>
   	<xs:attribute name="StructureType" type="StructureType" use="optional"/>
@@ -597,6 +614,7 @@ level. These unvalidated properties are:
   	<xs:attribute name="CrossSectionWallThickness" type="xs:float" use="optional"/>
   	<xs:attribute name="TrussCrossSection" type="xs:string" use="optional"/>
   </xs:complexType>
+  <!-- Support Geometry -->
   <xs:complexType name="Support">
   	<xs:attribute name="SupportType " type="SupportType" use="optional"/>
   	<xs:attribute name="RopeCrossSection" type="xs:string" use="optional"/>
@@ -613,10 +631,6 @@ level. These unvalidated properties are:
   	<xs:attribute name="ResistanceXX" type="xs:float" use="optional"/>
   	<xs:attribute name="ResistanceYY" type="xs:float" use="optional"/>
   	<xs:attribute name="ResistanceZZ" type="xs:float" use="optional"/>
-  </xs:complexType>
-  <xs:complexType name="Break">
-    <xs:attribute name="DMXOffset" type="dmxaddresstype" use="optional" default="1"/>
-    <xs:attribute name="DMXBreak" type="xs:unsignedByte" use="optional" default="1"/>
   </xs:complexType>
   <!-- DMXModes -->
   <xs:complexType name="DMXModes">
@@ -646,6 +660,7 @@ level. These unvalidated properties are:
   	<xs:attribute name="Geometry" type="nametype" use="required" />
   	<xs:attribute name="Description" type="xs:string"/>
   </xs:complexType>
+  <!-- DMXChannel -->
   <xs:complexType name="DMXChannels">
     <xs:sequence minOccurs="0" maxOccurs="unbounded">
       <xs:element name="DMXChannel" type="DMXChannel"/>
@@ -666,6 +681,7 @@ level. These unvalidated properties are:
     <xs:attribute name="Highlight" type="dmxtype" default="None"/>
     <xs:attribute name="Geometry" type="nametype" use="required"/>
   </xs:complexType>
+  <!-- LogicalChannel -->
   <xs:complexType name="LogicalChannel">
     <xs:sequence minOccurs="0" maxOccurs="unbounded">
       <xs:element name="ChannelFunction" type="ChannelFunction">
@@ -681,6 +697,7 @@ level. These unvalidated properties are:
     <xs:attribute name="MibFade" type="xs:float" use="optional"/>
     <xs:attribute name="DMXChangeTimeLimit" type="xs:float" use="optional"/>
   </xs:complexType>
+  <!-- ChannelFunction -->
   <xs:complexType name="ChannelFunction">
   	<xs:sequence minOccurs="0" maxOccurs="unbounded">
   		<xs:element name="ChannelSet" type="ChannelSet" />
@@ -713,13 +730,6 @@ level. These unvalidated properties are:
   	<xs:attribute name="Max" type="xs:float"/>
   	<xs:attribute name="CustomName" type="xs:string"/>
   </xs:complexType>
-  <xs:complexType name="SubChannelSet">
-    <xs:attribute name="Name" type="xs:string"/>
-    <xs:attribute name="PhysicalFrom" type="xs:string"/>
-    <xs:attribute name="PhysicalTo" type="xs:string"/>
-    <xs:attribute name="SubPhysicalUnit" type="nodetype"/>
-    <xs:attribute name="DMXProfile" type="nodetype"/>
-  </xs:complexType>
   <xs:complexType name="ChannelSet">
     <xs:attribute name="Name" type="xs:string" use="optional"/>
     <xs:attribute name="DMXFrom" type="dmxtype" use="optional"/>
@@ -727,6 +737,14 @@ level. These unvalidated properties are:
     <xs:attribute name="PhysicalTo" type="xs:float" use="optional"/>
     <xs:attribute name="WheelSlotIndex" type="xs:int" use="optional"/>
   </xs:complexType>
+  <xs:complexType name="SubChannelSet">
+    <xs:attribute name="Name" type="xs:string"/>
+    <xs:attribute name="PhysicalFrom" type="xs:string"/>
+    <xs:attribute name="PhysicalTo" type="xs:string"/>
+    <xs:attribute name="SubPhysicalUnit" type="nodetype"/>
+    <xs:attribute name="DMXProfile" type="nodetype"/>
+  </xs:complexType>
+  <!-- Relation -->
   <xs:complexType name="Relations">
     <xs:sequence minOccurs="0" maxOccurs="unbounded">
       <xs:element name="Relation" type="Relation"/>
@@ -738,6 +756,7 @@ level. These unvalidated properties are:
     <xs:attribute name="Follower" type="nodetype" use="required"/>
     <xs:attribute name="Type" type="RelationTypesEnum" use="required"/>
   </xs:complexType>
+  <!-- FTMacros -->
   <xs:complexType name="FTMacros">
     <xs:sequence minOccurs="0" maxOccurs="unbounded">
       <xs:element name="FTMacro" type="FTMacro" minOccurs="0" maxOccurs="unbounded"/>
