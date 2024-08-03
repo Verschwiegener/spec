@@ -174,17 +174,17 @@ level. These unvalidated properties are:
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="ActivationGroup">
-    <xs:attribute name="Name" type="xs:string" use="required"/>
+    <xs:attribute name="Name" type="nametype" use="required"/>
   </xs:complexType>
   <xs:complexType name="FeatureGroup">
     <xs:sequence minOccurs="0" maxOccurs="unbounded">
       <xs:element name="Feature" type="Feature"/>
     </xs:sequence>
-    <xs:attribute name="Name" type="xs:string" use="required"/>
+    <xs:attribute name="Name" type="nametype" use="required"/>
     <xs:attribute name="Pretty" type="xs:string" use="required"/>
   </xs:complexType>
   <xs:complexType name="Feature">
-    <xs:attribute name="Name" type="xs:string" use="required"/>
+    <xs:attribute name="Name" type="nametype" use="required"/>
   </xs:complexType>
   <xs:complexType name="Attributes">
     <xs:sequence>
@@ -292,7 +292,7 @@ level. These unvalidated properties are:
         </xs:unique>
       </xs:element>
     </xs:sequence>
-    <xs:attribute name="Name" type="xs:string" use="required"/>
+    <xs:attribute name="Name" type="nametype" use="required"/>
     <xs:attribute name="Color" type="colorcietype" use="optional"/>
     <xs:attribute name="DominantWaveLength" type="xs:float" use="optional"/> <!-- Required if Color is omitted! -->
     <xs:attribute name="DiodePart" type="xs:string" use="optional"/>
@@ -325,7 +325,7 @@ level. These unvalidated properties are:
         </xs:unique>
       </xs:element>
     </xs:sequence>
-    <xs:attribute name="Name" type="xs:string" use="required"/>
+    <xs:attribute name="Name" type="nametype" use="required"/>
     <xs:attribute name="Color" type="colorcietype" use="optional"/>
   </xs:complexType>
   <xs:complexType name="FilterMeasurement">
@@ -342,7 +342,7 @@ level. These unvalidated properties are:
   </xs:complexType>
   <!-- ColorSpace -->
   <xs:complexType name="ColorSpace">
-    <xs:attribute name="Name" type="xs:string" use="required"/>
+    <xs:attribute name="Name" type="nametype" use="required"/>
     <xs:attribute name="Mode" type="ColorSpaceEnum" use="optional" default="sRGB"/>
     <xs:attribute name="Red" type="colorcietype" use="optional"/>
     <xs:attribute name="Green" type="colorcietype" use="optional"/>
@@ -361,7 +361,7 @@ level. These unvalidated properties are:
   	</xs:sequence>
   </xs:complexType>
   <xs:complexType name="Gamut">
-  	<xs:attribute name="Name" type="xs:string"/>
+  	<xs:attribute name="Name" type="nametype"/>
   	<xs:attribute name="Points" type="xs:string"/>
   </xs:complexType>
   <xs:complexType name="DMXProfiles">
@@ -373,7 +373,7 @@ level. These unvalidated properties are:
   	<xs:sequence minOccurs="0">
   		<xs:element name="Point" type="Point"/>
   	</xs:sequence>
-  	<xs:attribute name="Name" type="xs:string"/>
+  	<xs:attribute name="Name" type="nametype"/>
   </xs:complexType>
   <xs:complexType name="Point">
   	<xs:attribute name="DMXPercentage" type="xs:float"/>
@@ -731,14 +731,14 @@ level. These unvalidated properties are:
   	<xs:attribute name="CustomName" type="xs:string"/>
   </xs:complexType>
   <xs:complexType name="ChannelSet">
-    <xs:attribute name="Name" type="xs:string" use="optional"/>
+    <xs:attribute name="Name" type="nametype" use="optional"/>
     <xs:attribute name="DMXFrom" type="dmxtype" use="optional"/>
     <xs:attribute name="PhysicalFrom" type="xs:float" use="optional"/>
     <xs:attribute name="PhysicalTo" type="xs:float" use="optional"/>
     <xs:attribute name="WheelSlotIndex" type="xs:int" use="optional"/>
   </xs:complexType>
   <xs:complexType name="SubChannelSet">
-    <xs:attribute name="Name" type="xs:string"/>
+    <xs:attribute name="Name" type="nametype"/>
     <xs:attribute name="PhysicalFrom" type="xs:string"/>
     <xs:attribute name="PhysicalTo" type="xs:string"/>
     <xs:attribute name="SubPhysicalUnit" type="nodetype"/>
@@ -751,7 +751,7 @@ level. These unvalidated properties are:
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="Relation">
-    <xs:attribute name="Name" type="xs:string" use="required"/>
+    <xs:attribute name="Name" type="nametype" use="required"/>
     <xs:attribute name="Master" type="nodetype" use="required"/>
     <xs:attribute name="Follower" type="nodetype" use="required"/>
     <xs:attribute name="Type" type="RelationTypesEnum" use="required"/>
@@ -906,7 +906,8 @@ level. These unvalidated properties are:
   </xs:simpleType>
   <xs:simpleType name="nametype">
     <xs:restriction base="xs:string">
-      <xs:pattern value="([a-zA-Z0-9#%()*+-/:;&lt;=&gt;@_` &quot;'])+"/>
+      <!-- Original Regex ([a-zA-Z0-9#%()*+-/:;&lt;=&gt;@_` &quot;'])+ -->
+      <xs:pattern value="([a-zA-Z0-9#%()*+-/:;&lt;=&gt;@_` &quot;'])+|"/> <!-- Fixed NameType not matching Empty Strings, important for Standart ColorSpace -->
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="featuretype">
