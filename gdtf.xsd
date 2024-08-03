@@ -41,7 +41,8 @@ level. These unvalidated properties are:
           </xs:keyref>
           <xs:keyref name="ModelKeyReference" refer="UniqueModel">
             <xs:selector xpath=".//Geometry|.//Axis|.//FilterBeam|.//FilterColor|.//FilterGobo|.//FilterShaper|
-            .//Beam|.//MediaServerLayer|.//MediaServerCamera|.//MediaServerMaster|.//Display|.//GeometryReference"/>
+            .//Beam|.//MediaServerLayer|.//MediaServerCamera|.//MediaServerMaster|.//Display|.//GeometryReference|
+            .//Laser|.//WiringObject|.//Inventory|.//Structure|.//Support|.//Magnet"/>
             <xs:field xpath="@Model"/>
           </xs:keyref>
           <xs:keyref name="TopLevelGeometryKeyReference" refer="UniqueTopLevelGeometries">
