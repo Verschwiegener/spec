@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!-- 
-XML Schema for GDTF 1.1
+XML Schema for GDTF 1.2
 =======================
 
-This document tries to describes GDTF 1.1 from DIN SPEC 15800:2020-07 to the
+This document tries to describes GDTF 1.2 from DIN SPEC 15800:2022-02 to the
 extent possible with XSD 1.0.
 
 Note that due to the restrictions of XSD 1.0, some syntactic properties of GDTF
@@ -411,10 +411,10 @@ level. These unvalidated properties are:
   </xs:complexType>
   <xs:complexType name="Properties">
     <xs:choice minOccurs="0" maxOccurs="unbounded">
-      <xs:element name="OperatingTemperature" type="OperatingTemperature" maxOccurs="1"/>
-      <xs:element name="Weight" type="Weight" maxOccurs="1"/>
-      <xs:element name="PowerConsumption" type="PowerConsumption" maxOccurs="1"/>
-      <xs:element name="LegHeight" type="LegHeight" maxOccurs="1"/>
+      <xs:element name="OperatingTemperature" type="OperatingTemperature"/>
+      <xs:element name="Weight" type="Weight"/>
+      <xs:element name="PowerConsumption" type="PowerConsumption"/>
+      <xs:element name="LegHeight" type="LegHeight"/>
     </xs:choice>
   </xs:complexType>
   <xs:complexType name="OperatingTemperature">
