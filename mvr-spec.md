@@ -1675,6 +1675,7 @@ Request:
 {
   "Type": "MVR_REQUEST",
   "FromStationUUID":"", 
+  "StationUUID":"",
   "FileUUID":"", 
 }
 ```
@@ -1759,6 +1760,7 @@ Request:
 {
   "Type": "MVR_NEW_SESSION_HOST",
   "ServiceName":"fancyProjectGroup._mvrxchange._tcp.local.", 
+  "StationUUID":"",
   "ServiceURL":"", 
 }
 ```
